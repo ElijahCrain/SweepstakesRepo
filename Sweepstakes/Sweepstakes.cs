@@ -6,13 +6,39 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-	class Sweepstakes
+	public class Sweepstakes
 	{
-		//Dictionary<TKey, TValue>
-		//Sweepstakes(string name)
-		// void RegisterContestant(Contestant contestant)
-		//Contestant PickWinner()
-		//void PrintContestantInfo(Contestant contestant)
+		//varaibles 
+		Dictionary<int, Contestant> contestantinfo = new Dictionary<int, Contestant>();
+		Random random;
+		private string name;
+		public string Name;
+		//ctor
+		public Sweepstakes(string name)
+		{
+			name = Name;
+			random = new Random();
+		}
+		//method
+		public void RegesterContestant(Contestant contestant)
+		{
+			contestant.firstName = UserInterface.FirstName();
+			contestant.lastName = UserInterface.LastName();
+			contestant.email = UserInterface.Email();
+			contestant.registrationNumber = UserInterface.RegNumber();
+		}
+		public Contestant PickWinner()
+		{
+			int randomRegNumber = random.Next(contestantinfo.Count);
+			Contestant winner = new Contestant();
+			winner = contestantinfo[randomRegNumber];
+			return winner;
+		}
+		public void PrintContestentInfo(Contestant contestant)
+		{
+			Console.WriteLine();
+		}
+		
 
 
 	}
